@@ -1,0 +1,87 @@
+import tkinter as tk
+from tkinter import *
+from time import strftime
+from PIL import Image, ImageTk
+
+window_main=tk.Tk(className=" Baby Name Generator ")
+window_main.geometry('1920x1080')
+
+img=ImageTk.PhotoImage(Image.open("C:\\Users\\psg67\\Downloads\\bby.jpg"))
+l=Label(image=img)
+l.pack()
+
+title_label=tk.Label(window_main, text="BABY NAMES", font=('ocean16',35,'bold'), foreground="black")
+title_label.place(x=200 , y=5)
+
+name_label=tk.Label(window_main, text="Please Enter the Prefered Letter", font=('ocean16',19))
+name_label.place(x=25 , y=80)
+
+a_var=tk.StringVar()
+alphabet_letter=tk.Entry(window_main, font=('ocean16',30,'bold'),textvariable=a_var).place(x=400  ,y=80 , 
+width=180, height=40)
+
+
+
+names=["Abhay","Ankit","Anushka",
+          "Bunty","Babu","Beena",
+          "Charan","Charu","Chaitra",
+          "Deepak","Dilip","Deepika",
+          "Emanuel","Elizabeth","Eniyan",
+          "Fatima","Flora","Fayaz",
+          "Gandhi","Garima","Gauri",
+          "Harini","Harry","Hamsa",
+          "Initha","Isai","Idris",
+          "Janiki","Jyoti","Jay",
+          "Kamal","Kriti","Krupa",
+          "Lisa","Lilli","Lathika",
+          "Manoj","Mary","Mahisha",
+          "Nitin","Nisha","Nila",
+          "Om","Oviya","Oliver",
+          "Priti","Pragati","Prem",
+          "Quincy","Qadir","Queena",
+          "Raju","Ravi","Reema",
+          "Sara","Sidhyaa","Srivi",
+          "Tina","Tamizhi","Thomas",
+          "Urmila","Usha","Usha",
+          "Vani","Vikram","Vijey",
+          "Watson","Wahidha","Wahad",
+          "Xavier","Xanthia","Xavi",
+          "Yamini","Yazhini","Yash",
+          "Zaara","Ziva","Zinniah"]
+
+def babyname():
+    for i in names:
+        if i[0][0].lower()==a_var.get().lower():
+            textarea.insert(END,(i+"\n"))
+
+display_button=tk.Button(window_main, font=('ocean16',25,'bold'), foreground='white' ,background='blue', 
+text='click',command=babyname)
+display_button.place(x=200  ,y=135 , width=70, height=45)
+
+
+def displayfunc():
+    a_var.set("0.0 ")
+    textarea.append("0.1" ,"end")
+    
+textarea_var=tk.StringVar()
+textarea=tk.Text(window_main, font=('ocean16',17))
+textarea.place(x=28,y=200,width=500,height=290)
+
+def clearFunc():
+    a_var.set("")
+    textarea.delete("1.0","end")
+
+    
+clear_button=tk.Button(window_main,font=('ocean16',12,'bold'),foreground="black",background="white",text="Clear",
+command=clearFunc)
+clear_button.place(x=550 ,y=480,width=65 ,height=30)
+
+
+
+exit_button=tk.Button(window_main,font=('ocean16',12,'bold'), foreground="black",background="red", text="Exit",
+command=window_main.destroy)
+exit_button.place(x=640 ,y=480,width=65 ,height=30)
+
+
+
+window_main.mainloop()
